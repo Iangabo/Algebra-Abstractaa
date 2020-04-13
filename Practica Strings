@@ -1,0 +1,189 @@
+Práctica: Clase String
+
+Resolver usando las funciones de la clase string, así como otras funciones de la librería estándar de c++.
+
+1.	Convertir un objeto string a un array de tipo char, y viceversa.
+
+#include <iostream>
+#include <string>
+#include <fstream>
+#include <sstream>
+
+string char_a_string( char *ptr ,int size){
+    string text;
+
+    for (int i = 0 ; i < size ;i++ )
+        text += ptr[i];
+
+    return text;
+}
+
+void string_a_char(string text ){
+
+    int size = text.size();
+    char arr[size -1] ;
+
+    for(int i = 0 ; i < size ; i++)
+        arr[i] =  text[i];
+    
+    for(int i = 0 ; i < size ; i++)
+        cout << arr[i];  
+}
+
+int main
+{
+	cout << char_a_string (y,4) <<endl;
+	string_a_char(“papel”);
+}
+
+2.	¿Cuál es la diferencia entre la función capacity y la función size de la clase string?
+
+Cuando hablamos de size, le da un espacio de trabajo se podría decir, pero el problema es que es limitado, y cuando usamos capacity no existe el límite, cuando la capacidad se agota y se necesita más, el objeto se expande automáticamente como que reasigna el espacio de almacenamiento.
+
+3.	Convertir las letras de un string de minúsculas a mayúsculas, y las mayúsculas a minúsculas.
+
+
+
+#include <iostream>
+#include <string>
+#include <fstream>
+#include <sstream>
+
+void minuscula_a_mayuscula(string text){
+
+    string::iterator a = text.begin();
+
+    while(a != text.end()){
+        *a = char(int(*a) - 32);
+        a++;
+    }
+
+    cout << text << endl;
+}
+
+void mayuscula_a_minuscula(string text){
+
+    string::iterator a = text.begin();
+
+    while(a != text.end()){
+        *a = char(int(*a) + 32);
+        a++;
+    }
+
+    cout << text << endl;
+}
+
+int main
+{
+	minuscula_a_mayuscula(“casa”);
+	mayuscula_a_minuscula(“CASA”)
+}
+
+4.	Recibir dos números por consola en variables tipo entero, luego construir un objeto string que concatene el primer número seguido del segundo número. Imprimir la cadena resultante, y en una nueva línea su valor multiplicado por 2. Usar funciones para convertir de string a entero y visceversa.
+
+        Ejemplo:
+        Input:
+    15
+    135
+
+        Output:
+    15135
+    30270
+
+
+void ejercicio4(void){
+    int x , y ;
+    cout << "numero: "; cin >> x;
+    cout << "numero: "; cin >> y;
+
+    string a = to_string(x) ;
+    string b = to_string(y) ;
+
+    string c( a + b );
+    cout << c << '\n';
+
+    int num = stoi(c) * 2;
+    cout << num << '\n';
+}
+
+5.	Crear un objeto string que esté formado por 1000 caracteres ‘a’, escribiendo una sola línea de código.
+
+void ejercicio5(){
+
+    string x ;
+    x.append(1000u , 'a');
+
+    cout << x << endl;
+    cout << x.size() << endl;
+
+}
+
+6.	Convertir la cadena: “Yo desaprobe el curso de Algebra Abstracta” a la cadena: “Yo aprobe el curso de Algebra Abstracta”. 
+
+void ejercicio6(){
+
+    string frase = "Yo desaprobe el curso de Algebra Abstracta";
+    int pos = frase.find("desaprobe");
+
+    frase.erase(pos,9);
+    cout << frase << endl;
+
+    frase.insert(pos , "aprobe");
+    cout << frase << endl;
+
+}
+7.	Recibir dos strings por entrada estándar, una frase y una palabra. Contar cuántas veces aparece la palabra en la frase.
+
+        Ejemplo:
+        Input:
+    Como poco coco como, poco coco compro.
+    coco
+
+        Output:
+    2
+
+8.	Recibir un string de longitud N e imprimir cada letra del string en una nueva línea usando iteradores.
+
+9.	Recibir dos strings por consola e imprimir un string que tenga al segundo string en la mitad el primer string. El primer string siempre tiene tamaño par.
+
+        Ejemplo:
+        Input:
+    gato
+    ti
+    
+        Output:
+    gatito
+
+
+
+10.	Recibir tres strings por consola, buscar todas las apariciones del segundo string en el primero y reemplazarlas por el tercer string recibido.
+
+        Ejemplo:
+        Input:
+    Cuando te diga que te creo, no me creas, porque ya no creo lo que creo.
+    creo
+    temo
+
+        Output:
+    Cuando te diga que te temo, no me creas, porque ya no temo lo que temo.
+
+11.	Dadas dos palabras, imprimir la que es lexicográficamente mayor.
+
+         Ejemplo:
+        Input:
+    Algebra
+    Abstracta
+
+        Output:
+    Algebra
+
+12.	Crear una función que reciba un número N (N va de 1 a 10), y que escriba N números con valores que van de 1 a 1000 en un archivo llamado “numeros.txt”.
+
+13.	Leer los números en el archivo “numeros.txt” de la pregunta 10 e imprimir la sumatoria.
+  
+ 
+ 
+
+
+
+
